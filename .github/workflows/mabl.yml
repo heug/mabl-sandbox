@@ -29,3 +29,4 @@ jobs:
         run: docker run -e MABL_REST_API_KEY=$MABL_API_KEY mablhq/mabl-cli-chromium:latest tests run --labels passing --headless
         env:
           MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
+          
