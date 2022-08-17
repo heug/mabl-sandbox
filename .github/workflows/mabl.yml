@@ -32,4 +32,4 @@ jobs:
       # - name: Authenticate mabl
       #   run: mabl auth activate-key $MABL_API_KEY
       - name: Run local tests
-        run: mabl tests run --labels passing --headless
+        run: sudo mabl tests run --labels passing --headless
