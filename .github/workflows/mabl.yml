@@ -3,7 +3,7 @@ on: [push]
 name: mabl Simple Example
 
 jobs:
-  test:
+  mabl-cloud:
     name: mabl Test
     runs-on: ubuntu-latest
     steps:
@@ -19,3 +19,16 @@ jobs:
         with:
           application-id: HIvlE0z3cQZ2mDoBCD1AAg-a
           environment-id: nwwfqkMqWbqq3jPFMfI6sw-e
+mabl-local
+    name: mabl Test
+    runs-on: ubuntu-latest
+    container:
+      image: mablhq/mabl-cli-chromium
+      env:
+        MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Authenticate mabl
+        run: mabl auth activate-key $MABL_API_KEY
+      - name: Run local tests
+        run: mabl tests run --labels passing --headless
