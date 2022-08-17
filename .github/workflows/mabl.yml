@@ -19,17 +19,20 @@ jobs:
         with:
           application-id: HIvlE0z3cQZ2mDoBCD1AAg-a
           environment-id: nwwfqkMqWbqq3jPFMfI6sw-e
+          plan-labels: passing
   
   mabl-local:
-    name: mabl Test
+    name: mabl Test local
     runs-on: ubuntu-latest
-    container:
-      image: mablhq/mabl-cli-chromium
-      env:
-        MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
+    # container:
+    #   image: mablhq/mabl-cli-chromium
+    #   env:
+    #     MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
     steps:
       # - uses: actions/checkout@v3
       # - name: Authenticate mabl
       #   run: mabl auth activate-key $MABL_API_KEY
       - name: Run local tests
-        run: sudo mabl tests run --labels passing --headless
+        run: docker run -e MABL_REST_API_KEY=$MABL_API_KEY mablhq/mabl-cli-chromium:latest tests run --labels passing --headless
+        env:
+          MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
