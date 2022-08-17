@@ -19,7 +19,8 @@ jobs:
         with:
           application-id: HIvlE0z3cQZ2mDoBCD1AAg-a
           environment-id: nwwfqkMqWbqq3jPFMfI6sw-e
-mabl-local
+  
+  mabl-local:
     name: mabl Test
     runs-on: ubuntu-latest
     container:
