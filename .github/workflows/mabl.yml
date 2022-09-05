@@ -19,7 +19,7 @@ jobs:
         with:
           application-id: ${{ secrets.MABL_APPLICATION_ID }}
           environment-id: ${{ secrets.MABL_ENVIRONMENT_ID }}
-          plan-labels: passing
+          # plan-labels: passing
   
   mabl-local:
     name: mabl Test local
