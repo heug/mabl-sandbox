@@ -17,7 +17,7 @@ jobs:
           MABL_API_KEY: ${{ secrets.MABL_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          application-id: ${{ secrets.MABL_APPPLICATION_ID }}
+          application-id: ${{ secrets.MABL_APPLICATION_ID }}
           environment-id: ${{ secrets.MABL_ENVIRONMENT_ID }}
           plan-labels: passing
   
