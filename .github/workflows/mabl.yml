@@ -12,12 +12,12 @@ jobs:
       - name: Run mabl tests
         run: |
           chmod +x ./scripts/mabl-deployment.sh
-          ./scripts/mabl-deployment.sh $MABL_API_KEY $MABL_APPLICATION_ID $MABL_ENVIRONMENT_ID
+          ./scripts/mabl-deployment.sh $MABL_API_KEY $MABL_ENVIRONMENT_ID $MABL_APPLICATION_ID
         shell: bash
         env:
           MABL_API_KEY: ${{ secrets.MABL_DEPLOYMENT_KEY }}
-          MABL_APPLICATION_ID: ${{ secrets.MABL_APPLICATION_ID }}
           MABL_ENVIRONMENT_ID: ${{ secrets.MABL_ENVIRONMENT_ID }}
+          MABL_APPLICATION_ID: ${{ secrets.MABL_APPLICATION_ID }}
 
   # mabl-cloud:
   #   name: mabl Test
