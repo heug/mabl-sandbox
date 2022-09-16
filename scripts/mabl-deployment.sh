@@ -19,6 +19,7 @@ deployment_event=$(curl -s "${MABL_API_BASE}/events/deployment" \
                         -d "{\"environment_id\":\"${ENV_ID}\"},\"application_id\"${APP_ID}\"}")
 # event_id=$(echo "${deployment_event}" | jq -r '.id')
 event_id=$(echo "${deployment_event}")
+
 echo "Deployment Event ID: ${event_id}"
 
 # Poll the Execution Result API until all Plans have completed
