@@ -8,8 +8,10 @@ jobs:
     name: Functional test deployment
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Run mabl tests
-        run: bash ./scripts/mabl-deployment.sh $MABL_API_KEY $MABL_APPLICATION_ID $MABL_ENVIRONMENT_ID
+        run: ./scripts/mabl-deployment.sh $MABL_API_KEY $MABL_APPLICATION_ID $MABL_ENVIRONMENT_ID
+        shell: bash
         env:
           MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
           MABL_APPLICATION_ID: ${{ secrets.MABL_APPLICATION_ID }}
