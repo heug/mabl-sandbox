@@ -20,13 +20,19 @@ jobs:
           application-id: ${{ secrets.MABL_APPLICATION_ID }}
           environment-id: ${{ secrets.MABL_ENVIRONMENT_ID }}
           # plan-labels: passing
+
+      - name: checker
+        run: echo "hello world"
+        
+        
+      
   
-  mabl-local:
-    name: mabl Test local
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run local tests
-        run: docker run -e MABL_REST_API_KEY=$MABL_API_KEY mablhq/mabl-cli-chromium:latest tests run --labels passing --headless
-        env:
-          MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
+#   mabl-local:
+#     name: mabl Test local
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Run local tests
+#         run: docker run -e MABL_REST_API_KEY=$MABL_API_KEY mablhq/mabl-cli-chromium:latest tests run --labels passing --headless
+#         env:
+#           MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
           
