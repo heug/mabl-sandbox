@@ -15,7 +15,7 @@ jobs:
           ./scripts/mabl-deployment.sh $MABL_API_KEY $MABL_APPLICATION_ID $MABL_ENVIRONMENT_ID
         shell: bash
         env:
-          MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
+          MABL_API_KEY: ${{ secrets.MABL_DEPLOYMENT_KEY }}
           MABL_APPLICATION_ID: ${{ secrets.MABL_APPLICATION_ID }}
           MABL_ENVIRONMENT_ID: ${{ secrets.MABL_ENVIRONMENT_ID }}
 
