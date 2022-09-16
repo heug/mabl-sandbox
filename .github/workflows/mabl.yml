@@ -3,36 +3,42 @@ on: [push]
 name: mabl Simple Example
 
 jobs:
-  mabl-cloud:
-    name: mabl Test
+
+  mabl-custom-bash:
+    name: Functional test deployment
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Functional test deployment
-        id: mabl-test-deployment
-        uses: mablhq/github-run-tests-action@v1
+      - name: Run mabl tests
+        run: bash ${GITHUB_WORKSPACE}/scripts/mabl-deployment.sh $MABL_API_KEY $MABL_APPLICATION_ID $MABL_ENVIRONMENT_ID
         env:
-          # Use a "CI/CD Integration" type of mabl API key
-          MABL_API_KEY: ${{ secrets.MABL_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          application-id: ${{ secrets.MABL_APPLICATION_ID }}
-          environment-id: ${{ secrets.MABL_ENVIRONMENT_ID }}
-          # plan-labels: passing
+          MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
+          MABL_APPLICATION_ID: ${{ secrets.MABL_APPLICATION_ID }}
+          MABL_ENVIRONMENT_ID: ${{ secrets.MABL_ENVIRONMENT_ID }}
 
-      - name: checker
-        run: echo "hello world"
-        
-        
-      
+  # mabl-cloud:
+  #   name: mabl Test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+
+  #     - name: Functional test deployment
+  #       id: mabl-test-deployment
+  #       uses: mablhq/github-run-tests-action@v1
+  #       env:
+  #         # Use a "CI/CD Integration" type of mabl API key
+  #         MABL_API_KEY: ${{ secrets.MABL_API_KEY }}
+  #         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  #       with:
+  #         application-id: ${{ secrets.MABL_APPLICATION_ID }}
+  #         environment-id: ${{ secrets.MABL_ENVIRONMENT_ID }}
+  #         # plan-labels: passing        
   
-#   mabl-local:
-#     name: mabl Test local
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Run local tests
-#         run: docker run -e MABL_REST_API_KEY=$MABL_API_KEY mablhq/mabl-cli-chromium:latest tests run --labels passing --headless
-#         env:
-#           MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
+  # mabl-local:
+  #   name: mabl Test local
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run local tests
+  #       run: docker run -e MABL_REST_API_KEY=$MABL_API_KEY mablhq/mabl-cli-chromium:latest tests run --labels passing --headless
+  #       env:
+  #         MABL_API_KEY: ${{ secrets.MABL_CLI_KEY }}
           
