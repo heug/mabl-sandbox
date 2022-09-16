@@ -17,8 +17,7 @@ deployment_event=$(curl -s "${MABL_API_BASE}/events/deployment" \
                         -u "key:${API_KEY}" \
                         -H 'Content-Type:application/json' \
                         -d "{\"environment_id\":\"${ENV_ID}\"},\"application_id\"${APP_ID}\"}")
-# event_id=$(echo "${deployment_event}" | jq -r '.id')
-event_id=$(echo "${deployment_event}")
+event_id=$(echo "${deployment_event}" | jq -r '.id')
 
 echo "Deployment Event ID: ${event_id}"
 
